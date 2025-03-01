@@ -9,6 +9,7 @@ import com.student.presentation.dto.StudentResponse;
 import com.student.service.interfaces.IStudentService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +18,8 @@ import java.util.UUID;
 @Service
 @AllArgsConstructor
 public class StudentServiceImpl implements IStudentService {
+
+    private static final String USER_NOT_FOUND_MESSAGE = "User whit id %s does not exist";
 
     private IStudentRepository studentRepository;
     private StudentMapper studentMapper;
@@ -30,7 +33,7 @@ public class StudentServiceImpl implements IStudentService {
     @Override
     public StudentResponse findById(UUID id) {
         Student student = this.studentRepository.findById(id)
-                .orElseThrow(() -> new ElementNotFoundException(String.format("User whit id %s does not exist", id)));
+                .orElseThrow(() -> new ElementNotFoundException(String.format(USER_NOT_FOUND_MESSAGE, id)));
         return this.studentMapper.toStudentResponse(student);
     }
 
@@ -46,16 +49,33 @@ public class StudentServiceImpl implements IStudentService {
     @Override
     public StudentResponse update(StudentRequest studentRequest, UUID id) {
         Student student = this.studentRepository.findById(id)
-                .orElseThrow(() -> new ElementNotFoundException(String.format("User whit id %s does not exist", id)));
-        Student studentForUpdate = this.studentMapper.toUpdateStudent(studentRequest, student);
-        Student studentUpdate = this.studentRepository.save(studentForUpdate);
-        return this.studentMapper.toStudentResponse(studentUpdate);
+                .orElseThrow(() -> new ElementNotFoundException(String.format(USER_NOT_FOUND_MESSAGE, id)));
+
+        if (!StringUtils.isBlank(studentRequest.name())){
+            student.setName(studentRequest.name());
+        }
+
+        if (!StringUtils.isBlank(studentRequest.lastName())){
+            student.setLastName(studentRequest.lastName());
+        }
+
+        if (studentRequest.age() > 0){
+            student.setAge(studentRequest.age());
+        }
+
+        if (!StringUtils.isBlank(studentRequest.email())){
+            student.setEmail(studentRequest.email());
+        }
+
+        Student studentUpdated = this.studentRepository.save(student);
+
+        return this.studentMapper.toStudentResponse(studentUpdated);
     }
 
     @Override
     public String deleteId(UUID id) {
         Student student = this.studentRepository.findById(id)
-                .orElseThrow(() -> new ElementNotFoundException(String.format("User whit id %s does not exist", id)));
+                .orElseThrow(() -> new ElementNotFoundException(String.format(USER_NOT_FOUND_MESSAGE, id)));
         this.studentRepository.delete(student);
         return "User with id %s deleted successfuly";
     }

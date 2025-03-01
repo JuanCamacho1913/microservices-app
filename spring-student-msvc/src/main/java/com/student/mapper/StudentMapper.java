@@ -17,7 +17,6 @@ public interface StudentMapper {
 
     Student toStudent(StudentRequest studentRequest);
     StudentResponse toStudentResponse(Student student);
-    Student toUpdateStudent(StudentRequest studentRequest, Student student);
 
     List<StudentResponse> toStudentResponseList(List<Student> studentList);
 }
