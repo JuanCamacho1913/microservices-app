@@ -17,7 +17,6 @@ public interface ICourseMapper {
 
     Course toCourse(CourseRequest courseRequest);
     CourseResponse toCourseResponse(Course course);
-    Course toUpdateCourse(CourseRequest courseRequest, Course course);
 
     List<CourseResponse> toCourseResponseList(List<Course> courseList);
 }
