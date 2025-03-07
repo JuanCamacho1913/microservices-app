@@ -1,11 +1,9 @@
 package com.student.presentation.controller;
 
-import com.student.persistence.entity.Student;
 import com.student.presentation.dto.StudentRequest;
 import com.student.presentation.dto.StudentResponse;
 import com.student.service.interfaces.IStudentService;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
