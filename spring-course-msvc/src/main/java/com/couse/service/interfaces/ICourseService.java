@@ -12,5 +12,5 @@ public interface ICourseService {
     CourseResponse findById(UUID id);
     CourseResponse save(CourseRequest courseRequest);
     CourseResponse update(CourseRequest courseRequest, UUID id);
-    String deleteId(UUID id);
+    String deleteById(UUID id);
 }
