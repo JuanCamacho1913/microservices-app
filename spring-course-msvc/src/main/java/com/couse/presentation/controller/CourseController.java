@@ -44,7 +44,7 @@ public class CourseController {
 
     @PutMapping("/delete/{id}")
     public ResponseEntity<String> deleteId(@PathVariable UUID id){
-        String result = this.courseService.deleteId(id);
+        String result = this.courseService.deleteById(id);
         return ResponseEntity.ok(result);
     }
 }
