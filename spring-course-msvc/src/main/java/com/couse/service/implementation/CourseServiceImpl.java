@@ -70,7 +70,7 @@ public class CourseServiceImpl implements ICourseService {
     }
 
     @Override
-    public String deleteId(UUID id) {
+    public String deleteById(UUID id) {
         Course course = this.courseRepository.findById(id)
                 .orElseThrow(() -> new ElementNotFoundException(String.format(USER_NOT_FOUND_MESSAGE, id)));
         this.courseRepository.delete(course);
