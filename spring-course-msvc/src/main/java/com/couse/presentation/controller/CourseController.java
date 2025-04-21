@@ -2,7 +2,10 @@ package com.couse.presentation.controller;
 
 import com.couse.presentation.dto.CourseRequest;
 import com.couse.presentation.dto.CourseResponse;
+import com.couse.presentation.dto.RegistrationResponse;
+import com.couse.presentation.dto.StudentRequest;
 import com.couse.service.interfaces.ICourseService;
+import com.couse.service.interfaces.IRegistrationService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +20,7 @@ import java.util.UUID;
 public class CourseController {
 
     private ICourseService courseService;
+    private IRegistrationService registrationService;
 
     @GetMapping("/findAll")
     public ResponseEntity<List<CourseResponse>> findAll(){
@@ -47,4 +51,14 @@ public class CourseController {
         String result = this.courseService.deleteById(id);
         return ResponseEntity.ok(result);
     }
+
+    @PostMapping("/register")
+    public ResponseEntity<RegistrationResponse> registerStudent(@RequestParam UUID courseId,
+                                                                @RequestBody StudentRequest studentRequest){
+        CourseResponse courseResponse = this.courseService.findById(courseId);
+        RegistrationResponse registrationResponse = this.registrationService.registerStudent(studentRequest.id(), courseResponse.id());
+
+        return new ResponseEntity<>(registrationResponse, HttpStatus.OK);
+    }
+
 }

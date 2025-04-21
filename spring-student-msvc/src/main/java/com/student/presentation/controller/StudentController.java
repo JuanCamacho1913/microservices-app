@@ -1,5 +1,6 @@
 package com.student.presentation.controller;
 
+import com.student.presentation.dto.RegistrationResponse;
 import com.student.presentation.dto.StudentRequest;
 import com.student.presentation.dto.StudentResponse;
 import com.student.service.interfaces.IStudentService;
@@ -34,6 +35,14 @@ public class StudentController {
     public ResponseEntity<StudentResponse> save(@RequestBody StudentRequest studentRequest){
         StudentResponse studentResponse = this.studentService.save(studentRequest);
         return new ResponseEntity<>(studentResponse, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/create/register")
+    public ResponseEntity<RegistrationResponse> saveAndRegister(@RequestBody StudentRequest studentRequest,
+                                                                @RequestParam UUID courseId){
+        RegistrationResponse registrationResponse = this.studentService.saveAndRegister(studentRequest, courseId);
+
+        return new ResponseEntity<>(registrationResponse, HttpStatus.CREATED);
     }
 
     @PutMapping("/update/{id}")
