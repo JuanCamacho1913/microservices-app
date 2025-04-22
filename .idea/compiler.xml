@@ -10,7 +10,7 @@
         <module name="spring-eureka-msvc" />
         <module name="spring-gateway-msvc" />
       </profile>
-      <profile name="Annotation profile for spring-course-msvc" enabled="true">
+      <profile name="Annotation profile for spring-student-msvc" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
