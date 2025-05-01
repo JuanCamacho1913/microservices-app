@@ -1,8 +1,8 @@
 package com.couse.mapper;
 
+import com.common.course.CourseRequest;
+import com.common.course.CourseResponse;
 import com.couse.persistence.entity.Course;
-import com.couse.presentation.dto.CourseRequest;
-import com.couse.presentation.dto.CourseResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;

@@ -1,7 +1,7 @@
 package com.couse.service.interfaces;
 
-import com.couse.presentation.dto.CourseRequest;
-import com.couse.presentation.dto.CourseResponse;
+import com.common.course.CourseRequest;
+import com.common.course.CourseResponse;
 
 import java.util.List;
 import java.util.UUID;

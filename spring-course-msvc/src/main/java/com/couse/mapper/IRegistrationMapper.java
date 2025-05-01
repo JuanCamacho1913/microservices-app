@@ -1,7 +1,7 @@
 package com.couse.mapper;
 
+import com.common.registration.RegistrationResponse;
 import com.couse.persistence.entity.Registration;
-import com.couse.presentation.dto.RegistrationResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;

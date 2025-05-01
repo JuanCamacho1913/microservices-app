@@ -1,9 +1,8 @@
 package com.student.service.http;
 
 
-import com.student.presentation.dto.RegistrationResponse;
-import com.student.presentation.dto.StudentRequest;
-import com.student.presentation.dto.StudentResponse;
+import com.common.registration.RegistrationResponse;
+import com.common.student.StudentResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;

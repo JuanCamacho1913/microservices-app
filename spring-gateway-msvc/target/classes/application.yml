@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: SPRING-GATEWAY
+
+  cloud:
+    gateway:
+      routes:
+        - id: msvc-courses
+          uri: lb://SPRING-COURSE
+          predicates:
+            - Path=/api/course/**
+
+        - id: msvc-students
+          uri: lb://SPRING-STUDENT
+          predicates:
+            - Path=/api/student/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
