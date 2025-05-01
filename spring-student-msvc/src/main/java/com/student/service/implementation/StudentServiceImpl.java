@@ -1,16 +1,15 @@
 package com.student.service.implementation;
 
+import com.common.registration.RegistrationResponse;
+import com.common.student.StudentBaseRequest;
+import com.common.student.StudentResponse;
 import com.student.exception.error.ElementNotFoundException;
 import com.student.mapper.StudentMapper;
 import com.student.persistence.entity.Student;
 import com.student.persistence.repository.IStudentRepository;
-import com.student.presentation.dto.RegistrationResponse;
-import com.student.presentation.dto.StudentRequest;
-import com.student.presentation.dto.StudentResponse;
 import com.student.service.http.ICourseClient;
 import com.student.service.interfaces.IStudentService;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
@@ -41,8 +40,8 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
-    public StudentResponse save(StudentRequest studentRequest) {
-        Student student = this.studentMapper.toStudent(studentRequest);
+    public StudentResponse save(StudentBaseRequest studentBaseRequest) {
+        Student student = this.studentMapper.toStudent(studentBaseRequest);
         student.setId(UUID.randomUUID());
         Student studentSaved = this.studentRepository.save(student);
 
@@ -50,7 +49,7 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
-    public RegistrationResponse saveAndRegister(StudentRequest studentRequest, UUID courseId) {
+    public RegistrationResponse saveAndRegister(StudentBaseRequest studentRequest, UUID courseId) {
         Student student = this.studentMapper.toStudent(studentRequest);
         student.setId(UUID.randomUUID());
 
@@ -62,7 +61,7 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
-    public StudentResponse update(StudentRequest studentRequest, UUID id) {
+    public StudentResponse update(StudentBaseRequest studentRequest, UUID id) {
         Student student = this.studentRepository.findById(id)
                 .orElseThrow(() -> new ElementNotFoundException(String.format(USER_NOT_FOUND_MESSAGE, id)));
 

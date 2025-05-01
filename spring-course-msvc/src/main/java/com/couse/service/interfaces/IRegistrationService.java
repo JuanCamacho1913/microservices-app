@@ -1,6 +1,6 @@
 package com.couse.service.interfaces;
 
-import com.couse.presentation.dto.RegistrationResponse;
+import com.common.registration.RegistrationResponse;
 
 import java.util.List;
 import java.util.UUID;

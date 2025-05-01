@@ -1,4 +1,4 @@
-package com.couse.presentation.dto;
+package com.common.course;
 
 public record CourseRequest(
         String name,

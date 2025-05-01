@@ -1,11 +1,11 @@
 package com.couse.service.implementation;
 
+import com.common.course.CourseRequest;
+import com.common.course.CourseResponse;
 import com.couse.exception.error.ElementNotFoundException;
 import com.couse.mapper.ICourseMapper;
 import com.couse.persistence.entity.Course;
 import com.couse.persistence.repository.ICourseRepository;
-import com.couse.presentation.dto.CourseRequest;
-import com.couse.presentation.dto.CourseResponse;
 import com.couse.service.interfaces.ICourseService;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.StringUtils;

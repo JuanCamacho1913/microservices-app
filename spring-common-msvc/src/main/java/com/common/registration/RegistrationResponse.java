@@ -1,6 +1,4 @@
-package com.couse.presentation.dto;
-
-import jakarta.persistence.Column;
+package com.common.registration;
 
 import java.util.UUID;
 

@@ -1,8 +1,8 @@
 package com.student.mapper;
 
+import com.common.student.StudentBaseRequest;
+import com.common.student.StudentResponse;
 import com.student.persistence.entity.Student;
-import com.student.presentation.dto.StudentRequest;
-import com.student.presentation.dto.StudentResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -11,24 +11,24 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-03-29T15:03:20-0500",
+    date = "2025-04-29T23:11:47-0500",
     comments = "version: 1.6.3, compiler: javac, environment: Java 17.0.8 (Oracle Corporation)"
 )
 @Component
 public class StudentMapperImpl implements StudentMapper {
 
     @Override
-    public Student toStudent(StudentRequest studentRequest) {
-        if ( studentRequest == null ) {
+    public Student toStudent(StudentBaseRequest studentBaseRequest) {
+        if ( studentBaseRequest == null ) {
             return null;
         }
 
         Student.StudentBuilder student = Student.builder();
 
-        student.name( studentRequest.name() );
-        student.lastName( studentRequest.lastName() );
-        student.age( studentRequest.age() );
-        student.email( studentRequest.email() );
+        student.name( studentBaseRequest.name() );
+        student.lastName( studentBaseRequest.lastName() );
+        student.age( studentBaseRequest.age() );
+        student.email( studentBaseRequest.email() );
 
         return student.build();
     }

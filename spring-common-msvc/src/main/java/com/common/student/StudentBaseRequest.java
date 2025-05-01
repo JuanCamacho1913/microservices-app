@@ -1,6 +1,6 @@
-package com.student.presentation.dto;
+package com.common.student;
 
-public record StudentRequest(
+public record StudentBaseRequest(
         String name,
         String lastName,
         byte age,
