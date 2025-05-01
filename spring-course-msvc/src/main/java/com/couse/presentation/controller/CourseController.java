@@ -1,9 +1,9 @@
 package com.couse.presentation.controller;
 
-import com.couse.presentation.dto.CourseRequest;
-import com.couse.presentation.dto.CourseResponse;
-import com.couse.presentation.dto.RegistrationResponse;
-import com.couse.presentation.dto.StudentRequest;
+import com.common.course.CourseRequest;
+import com.common.course.CourseResponse;
+import com.common.course.CourseStudentRequest;
+import com.common.registration.RegistrationResponse;
 import com.couse.service.interfaces.ICourseService;
 import com.couse.service.interfaces.IRegistrationService;
 import lombok.AllArgsConstructor;
@@ -54,9 +54,9 @@ public class CourseController {
 
     @PostMapping("/register")
     public ResponseEntity<RegistrationResponse> registerStudent(@RequestParam UUID courseId,
-                                                                @RequestBody StudentRequest studentRequest){
+                                                                @RequestBody CourseStudentRequest courseStudentRequest){
         CourseResponse courseResponse = this.courseService.findById(courseId);
-        RegistrationResponse registrationResponse = this.registrationService.registerStudent(studentRequest.id(), courseResponse.id());
+        RegistrationResponse registrationResponse = this.registrationService.registerStudent(courseStudentRequest.id(), courseResponse.id());
 
         return new ResponseEntity<>(registrationResponse, HttpStatus.OK);
     }

@@ -1,7 +1,7 @@
 package com.couse.mapper;
 
+import com.common.registration.RegistrationResponse;
 import com.couse.persistence.entity.Registration;
-import com.couse.presentation.dto.RegistrationResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-03-29T15:03:39-0500",
+    date = "2025-04-28T18:28:07-0500",
     comments = "version: 1.6.3, compiler: javac, environment: Java 17.0.8 (Oracle Corporation)"
 )
 @Component

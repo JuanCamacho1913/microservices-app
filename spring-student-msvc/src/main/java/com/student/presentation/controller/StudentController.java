@@ -1,8 +1,8 @@
 package com.student.presentation.controller;
 
-import com.student.presentation.dto.RegistrationResponse;
-import com.student.presentation.dto.StudentRequest;
-import com.student.presentation.dto.StudentResponse;
+import com.common.registration.RegistrationResponse;
+import com.common.student.StudentBaseRequest;
+import com.common.student.StudentResponse;
 import com.student.service.interfaces.IStudentService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -32,22 +32,22 @@ public class StudentController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<StudentResponse> save(@RequestBody StudentRequest studentRequest){
-        StudentResponse studentResponse = this.studentService.save(studentRequest);
+    public ResponseEntity<StudentResponse> save(@RequestBody StudentBaseRequest studentBaseRequest){
+        StudentResponse studentResponse = this.studentService.save(studentBaseRequest);
         return new ResponseEntity<>(studentResponse, HttpStatus.CREATED);
     }
 
     @PostMapping("/create/register")
-    public ResponseEntity<RegistrationResponse> saveAndRegister(@RequestBody StudentRequest studentRequest,
+    public ResponseEntity<RegistrationResponse> saveAndRegister(@RequestBody StudentBaseRequest studentBaseRequest,
                                                                 @RequestParam UUID courseId){
-        RegistrationResponse registrationResponse = this.studentService.saveAndRegister(studentRequest, courseId);
+        RegistrationResponse registrationResponse = this.studentService.saveAndRegister(studentBaseRequest, courseId);
 
         return new ResponseEntity<>(registrationResponse, HttpStatus.CREATED);
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<StudentResponse> update(@RequestBody StudentRequest studentRequest, @PathVariable UUID id){
-        StudentResponse studentResponse = this.studentService.update(studentRequest, id);
+    public ResponseEntity<StudentResponse> update(@RequestBody StudentBaseRequest studentBaseRequest, @PathVariable UUID id){
+        StudentResponse studentResponse = this.studentService.update(studentBaseRequest, id);
         return new ResponseEntity<>(studentResponse, HttpStatus.OK);
     }
 

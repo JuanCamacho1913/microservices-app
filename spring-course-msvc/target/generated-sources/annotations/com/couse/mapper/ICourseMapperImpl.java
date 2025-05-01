@@ -1,8 +1,8 @@
 package com.couse.mapper;
 
+import com.common.course.CourseRequest;
+import com.common.course.CourseResponse;
 import com.couse.persistence.entity.Course;
-import com.couse.presentation.dto.CourseRequest;
-import com.couse.presentation.dto.CourseResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-03-29T15:03:39-0500",
+    date = "2025-04-28T18:28:07-0500",
     comments = "version: 1.6.3, compiler: javac, environment: Java 17.0.8 (Oracle Corporation)"
 )
 @Component

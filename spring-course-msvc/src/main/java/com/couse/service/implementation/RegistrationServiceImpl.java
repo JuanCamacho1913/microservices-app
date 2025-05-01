@@ -1,9 +1,9 @@
 package com.couse.service.implementation;
 
+import com.common.registration.RegistrationResponse;
 import com.couse.mapper.IRegistrationMapper;
 import com.couse.persistence.entity.Registration;
 import com.couse.persistence.repository.IRegistrationRepository;
-import com.couse.presentation.dto.RegistrationResponse;
 import com.couse.service.interfaces.IRegistrationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
